@@ -15,7 +15,7 @@ const Theme = {
 ### Create a themed styled function
 
 ```ts
-import { createThemedStyle } from 'styled-utils'
+import { createThemedStyle } from 'themed-styled-components'
 import rawStyled from 'styled-components'
 // or import rawStyled from '@emotion/styled'
 
