@@ -1,7 +1,10 @@
-import { ThemedInterpolation, ThemeLike, PropsWithTheme } from './types'
+import { ThemedInterpolation, ThemeLike, PropsWithTheme, HtmlTags } from './types'
 
 /** Now our interpolation function can return theme keys so we need the resolve the actual value from the props */
-function resolveInterpolation(interpolation: ThemedInterpolation, props: PropsWithTheme): unknown {
+function resolveInterpolation(
+  interpolation: ThemedInterpolation | string,
+  props: PropsWithTheme
+): unknown {
   const { theme } = props
   if (typeof interpolation === 'function') {
     // get the result of the interpolation
@@ -23,13 +26,15 @@ function resolveInterpolation(interpolation: ThemedInterpolation, props: PropsWi
  * It can return a key of a theme in an autocompleted manner thanks to typescript
  */
 export function createThemedStyled<Theme extends ThemeLike = any>(styledLikeFunction: Function) {
-  return function<Props extends PropsWithTheme>(
-    strings: TemplateStringsArray,
-    ...interpolations: ThemedInterpolation<Props, Theme>[]
-  ) {
-    const resolvedInterpolations = interpolations.map(interpolation => (props: PropsWithTheme) =>
-      resolveInterpolation(interpolation as ThemedInterpolation, props)
-    )
-    return styledLikeFunction(strings, ...resolvedInterpolations)
+  return function(tagName: HtmlTags) {
+    return function<Props extends {}>(
+      strings: TemplateStringsArray,
+      ...interpolations: ThemedInterpolation<Props & { theme: Theme }, Theme>[]
+    ) {
+      const resolvedInterpolations = interpolations.map(interpolation => (props: PropsWithTheme) =>
+        resolveInterpolation(interpolation as ThemedInterpolation, props)
+      )
+      return styledLikeFunction(tagName)(strings, ...resolvedInterpolations)
+    }
   }
 }

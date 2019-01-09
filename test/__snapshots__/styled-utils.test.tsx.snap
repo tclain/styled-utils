@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createThemedStyled it should still support interpolation function: notprimary 1`] = `
+Array [
+  <style
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": ".css-1mmc512{color:teal;border-color:teal;}",
+      }
+    }
+    data-emotion-css="1mmc512"
+  />,
+  <div
+    className="css-1mmc512"
+  />,
+]
+`;
+
+exports[`createThemedStyled it should still support interpolation function: primary 1`] = `
+Array [
+  <style
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": ".css-9qoy8n{color:red;border-color:teal;}",
+      }
+    }
+    data-emotion-css="9qoy8n"
+  />,
+  <div
+    className="css-9qoy8n"
+  />,
+]
+`;
+
+exports[`createThemedStyled should support theme keys along  1`] = `
+Array [
+  <style
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": ".css-t31ymc{background-color:bg-color;}",
+      }
+    }
+    data-emotion-css="t31ymc"
+  />,
+  <div
+    className="css-t31ymc"
+  />,
+]
+`;

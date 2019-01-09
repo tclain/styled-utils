@@ -14,17 +14,25 @@ const Theme = {
 
 ### Create a themed styled function
 
-```js
+```ts
 import { createThemedStyle } from 'styled-utils'
 import rawStyled from 'styled-components'
 // or import rawStyled from '@emotion/styled'
 
-const styled = createThemedStyle < typeof Theme > rawStyled
+const styled = createThemedStyle<typeof Theme>(rawStyled)
 ```
 
-Now you can use styled almost as usual, but with superpowers.
+Now you can use `styled` almost as usual, but with superpowers.
 
-```.mdx
+```js
+
+const StyledButton = styled('div')`
+  /* direct theme interpolation key */
+  background-color: ${"hello"};
+  /* return theme key  from props interpolation*/
+  color: ${props => props.primary ? "hello": "red"}
+`
+
 <div style={{ padding: '20px', backgroundColor: 'tomato' }}>
   <h4>Beep</h4>
 </div>
