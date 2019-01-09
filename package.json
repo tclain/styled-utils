@@ -1,6 +1,6 @@
 {
-  "name": "styled-utils",
-  "version": "0.0.0",
+  "name": "@tclaindev/styled-utils",
+  "version": "0.0.1",
   "description": "",
   "keywords": [],
   "main": "dist/styled-utils.umd.js",
